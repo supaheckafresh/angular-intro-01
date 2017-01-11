@@ -10,15 +10,15 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state('login', {
       url: '/login',
-      templateUrl: 'login.html'
+      templateUrl: 'js/login/login.html'
     })
     .state('widgets', {
       url: '/widgets',
-      templateUrl: 'widgets.html'
+      templateUrl: 'js/widgets/widgets.html'
     })
     .state('widgets.widget', {
       url: '/:id',
-      templateUrl: 'widgets.widget.html'
+      templateUrl: 'js/widgets/widgets.widget.html'
     })
     .state('otherwise', {
       url: '/nope',
