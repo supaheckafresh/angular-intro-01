@@ -1,21 +1,27 @@
-angular.module('application', ['ngRoute'])
+angular.module('application', ['ui.router'])
   .config(config);
 
-function config($locationProvider, $routeProvider) {
+function config($stateProvider, $urlRouterProvider, $locationProvider) {
 
-  $locationProvider.html5Mode(true);
+  $locationProvider.html5Mode(true).hashPrefix('!');
 
-  $routeProvider
-    .when('/login', {
+  $urlRouterProvider.otherwise('/nope');
+
+  $stateProvider
+    .state('login', {
+      url: '/login',
       templateUrl: 'login.html'
     })
-    .when('/widgets', {
-      template: '<h1>Widgets</h1>'
+    .state('widgets', {
+      url: '/widgets',
+      templateUrl: 'widgets.html'
     })
-    .when('/widgets/:id', {
-      templateUrl: '<h1>This is a single widget</h1>'
+    .state('widgets.widget', {
+      url: '/:id',
+      templateUrl: 'widgets.widget.html'
     })
-    .otherwise({
-      template: '<h1>Nothing to see here. Move along</h1>'
+    .state('otherwise', {
+      url: '/nope',
+      template: '<div>Nothing to see here.</div>'
     })
 }
